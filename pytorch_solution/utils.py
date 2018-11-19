@@ -4,6 +4,8 @@ import torch
 from collections import deque, namedtuple
 import random
 
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
 class ReplayBuffer:
     """Fixed-size buffer to store experience tuples."""
 
@@ -43,23 +45,21 @@ class ReplayBuffer:
     
     
 class OUNoise:
-    """Ornstein-Uhlenbeck process."""
 
-    def __init__(self, size, seed, mu=0., theta=0.15, sigma=0.2):
-        """Initialize parameters and noise process."""
-        self.mu = mu * np.ones(size)
+    def __init__(self, action_dimension, scale=0.1, mu=0, theta=0.15, sigma=0.2):
+        self.action_dimension = action_dimension
+        self.scale = scale
+        self.mu = mu
         self.theta = theta
         self.sigma = sigma
-        self.seed = random.seed(seed)
+        self.state = np.ones(self.action_dimension) * self.mu
         self.reset()
 
     def reset(self):
-        """Reset the internal state (= noise) to mean (mu)."""
-        self.state = copy.copy(self.mu)
+        self.state = np.ones(self.action_dimension) * self.mu
 
     def sample(self):
-        """Update internal state and return it as a noise sample."""
         x = self.state
-        dx = self.theta * (self.mu - x) + self.sigma * np.array([random.random() for i in range(len(x))])
+        dx = self.theta * (self.mu - x) + self.sigma * np.random.randn(len(x))
         self.state = x + dx
-        return self.state
+        return torch.tensor(self.state * self.scale).float()

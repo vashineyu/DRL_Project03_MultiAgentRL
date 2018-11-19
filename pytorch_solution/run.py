@@ -51,7 +51,7 @@ def maddpg(max_episodes=2000, print_every=10):
             env_info = env.step(actions)[brain_name]
             next_states = env_info.vector_observations
             rewards = env_info.rewards
-            print(rewards)
+            #print(rewards) # example: [-0.009999999776482582, 0.0]
             dones = env_info.local_done
             agent.step(states, actions, rewards, next_states, dones)
             states = next_states
