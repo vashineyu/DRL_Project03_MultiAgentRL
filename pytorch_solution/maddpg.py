@@ -59,8 +59,12 @@ class MADDPG():
         """Save experience in replay memory, and use random sample from buffer to learn."""
         # Save experience / reward
 
-        for state, action, reward, next_state, done in zip(states, actions, rewards, next_states, dones):
-            self.memory.add(state, action, reward, next_state, done)
+        s = states
+        a = actions
+        r = np.max(rewards)
+        ns = next_states
+        d = np.any(dones)
+        self.memory.add(states, actions, rewards, next_states, dones)
 
         # Learn, if enough samples are available in memory
         if len(self.memory) > BATCH_SIZE:
