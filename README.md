@@ -3,12 +3,12 @@
 
 ## Introduction
 Solving the [Unity Tennis Game](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#tennis) with Multi-agents environment.
-![Tennis](https://user-images.githubusercontent.com/10624937/42135623-e770e354-7d12-11e8-998d-29fc74429ca2.gif)
+![Tennis](https://blogs.unity3d.com/wp-content/uploads/2017/09/image2-2.gif)
 
 In this environment, two agents were playing the tennis together. The goal of the game is to keep the ball bounce between agent's rackets and won't fall on the ground or hit out of bounds. <br>
 
 State
-* For each agent, 8 variables corresponding to the position and velocity of the ball and racket. Note, each agent receives its own local observation.
+* For each agent, 24 variables corresponding to the position and velocity of the ball and racket. Note, each agent receives its own local observation.
 
 Action
 * For each agent, two continuous actions are available: 1) movement toward/away the net, 2) jumping. The action space for all actions are ranged from -1 to +1.
@@ -21,7 +21,7 @@ The final goal is considered as solved when reaching +0.5 scores over 100 consec
 
 ## Setup
 1. Clone the [repo](https://github.com/vashineyu/DRL_Project03_MultiAgentRL)
-2. `./build_env.sh`
+2. execute `./build_env.sh`
 
 ## Run
 1. The main file is [run.py](./run.py) To reporduce the result: `python run.py`
