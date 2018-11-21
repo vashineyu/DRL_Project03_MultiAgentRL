@@ -8,7 +8,7 @@ parser.add_argument('--experiment_tag', default = None, type = str)
 parser.add_argument('--use_noise', default = 1)
 FLAGS = parser.parse_args()
 
-env = UnityEnvironment(file_name="../Tennis_Linux_NoVis/Tennis.x86_64")
+env = UnityEnvironment(file_name="./Tennis_Linux_NoVis/Tennis.x86_64")
 
 # get the default brain
 brain_name = env.brain_names[0]

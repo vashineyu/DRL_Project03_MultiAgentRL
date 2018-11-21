@@ -33,4 +33,8 @@ The implementation details such as hyper-parameters can be found in [report.pdf]
 
 ## Results
 Solved version
-![Result](./pytorch_solution/result.png)
+#### 2 layers, 128 units per layer
+![Result1](./pytorch_solution/result_2layers.png)
+#### 4 layers, 128 units per layer
+![Result2](./pytorch_solution/result_4layers.png)
+
